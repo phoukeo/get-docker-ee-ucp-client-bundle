@@ -3,7 +3,7 @@
 ############################################################################################################################################################
 # This script downloads a Docker EE UCP Client Bundle.
 #
-#   Syntax: get-docker-ee-ucp-client-bundle.sh-d docker-ee-ucp-manager
+#   Syntax: get-docker-ee-ucp-client-bundle.sh -d docker-ee-ucp-manager
 #
 #   Pre-requisites:
 #
@@ -19,7 +19,7 @@
 ############################################################################################################################################################
 
 function usage () {
-    printf 'Usage: get-docker-ee-ucp-client-bundle.sh-d docker-ee-ucp-manager-host\n' >&2
+    printf 'Usage: get-docker-ee-ucp-client-bundle.sh -d docker-ee-ucp-manager-host\n' >&2
     printf ' -d is the Docker EE UCP Manager Host (hostname or IP address) and must be specified.\n' >&2
     printf ' -h displays this command help.\n' >&2
 }
