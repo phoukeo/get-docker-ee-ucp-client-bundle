@@ -19,7 +19,7 @@
 ############################################################################################################################################################
 
 function usage () {
-    printf 'Usage: %s -d docker-ee-ucp-manager-host\n' "$(basename $0)" >&2
+    printf 'Usage: %s -d docker-ee-ucp-manager-host\n' "$(basename "$0")" >&2
     printf ' -d is the Docker EE UCP Manager Host (hostname or IP address) and must be specified.\n' >&2
     printf ' -h displays this command help.\n' >&2
 }
