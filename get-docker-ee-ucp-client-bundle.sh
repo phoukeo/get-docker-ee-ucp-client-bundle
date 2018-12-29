@@ -19,7 +19,7 @@
 ############################################################################################################################################################
 
 function usage () {
-    printf 'Usage: get-docker-ee-ucp-client-bundle.sh -d docker-ee-ucp-manager-host\n' >&2
+    printf 'Usage: %s -d docker-ee-ucp-manager-host\n' "$(basename $0)" >&2
     printf ' -d is the Docker EE UCP Manager Host (hostname or IP address) and must be specified.\n' >&2
     printf ' -h displays this command help.\n' >&2
 }
@@ -71,7 +71,7 @@ DOCKER_EE_HOST=''
 
 OPTERR=0
 
-while getopts ":d:h" opt; do
+while getopts "d:h" opt; do
     case $opt in
         d)                          # -d docker ee ucp host
             DOCKER_EE_HOST=$OPTARG
