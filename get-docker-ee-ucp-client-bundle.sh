@@ -71,7 +71,7 @@ DOCKER_EE_HOST=''
 
 OPTERR=0
 
-while getopts "d:h" opt; do
+while getopts ":d:h" opt; do
     case $opt in
         d)                          # -d docker ee ucp host
             DOCKER_EE_HOST=$OPTARG
@@ -86,7 +86,7 @@ while getopts "d:h" opt; do
             exit 0
             ;;            
         \?)
-            printf "Invalid option: -%s\\n" "${OPTARG}" >&2
+            printf 'Invalid option: -%s\n' "${OPTARG}" >&2
             usage
             exit 1
             ;;
@@ -118,15 +118,15 @@ OUTPUT=$(curl --insecure --location --silent --show-error --connect-timeout 10 -
 HTTP_CODE=$(echo "$OUTPUT" | awk 'END{print}')
 if [[ "$HTTP_CODE" != "200" ]]; then
         printf 'Unable to get an authorization token!\n' >&2
-        printf "HTTP Code: %s\\n" "${HTTP_CODE}" >&2
-        printf "https://%s/auth/login\\n" "${DOCKER_EE_HOST}" >&2
+        printf 'HTTP Code: %s\n' "${HTTP_CODE}" >&2
+        printf 'https://%s/auth/login\n' "${DOCKER_EE_HOST}" >&2
         exit 1
 fi  
 
 AUTHTOKEN=$(echo "$OUTPUT" | awk 'NR > 1 { print prev } { prev = $0 }' | jq -r .auth_token)
 if [[ -z $AUTHTOKEN ]]; then
     printf 'Unable to get an authorization token!\n' >&2
-    printf "%s\\n" "${OUTPUT}" >&2
+    printf '%s\n' "${OUTPUT}" >&2
     exit 1
 fi    
 
@@ -139,8 +139,8 @@ OUTPUT=$(curl --insecure --location --silent --show-error --connect-timeout 10 -
 HTTP_CODE=$(echo "$OUTPUT" | awk 'END{print}')
 if [[ "$HTTP_CODE" != "200" ]]; then
         printf 'Unable to download a Docker EE Client Bundle!\n' >&2
-        printf "HTTP Code: %s\\n" "${HTTP_CODE}" >&2
-        printf "https://%s/api/clientbundle\\n" "${DOCKER_EE_HOST}" >&2
+        printf 'HTTP Code: %s\n' "${HTTP_CODE}" >&2
+        printf 'https://%s/api/clientbundle\n' "${DOCKER_EE_HOST}" >&2
         exit 1
 fi        
 
